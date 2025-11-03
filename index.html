@@ -1,13 +1,38 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>landingsalvatore</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>landingsalvatore</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <main class="bg-slate-50 dark:bg-gray-900">
+    <div id="container-01" class="mx-auto px-4 py-20 text-center">
+      <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+        Sonríe con confianza: tu salud dental en manos expertas
+      </h1>
+
+      <p class="mt-6 text-lg leading-relaxed text-gray-600 max-w-2xl mx-auto dark:text-gray-300">
+        En Consultorio Dental Arrobo combinamos tecnología avanzada y atención personalizada para cuidar tu sonrisa. Implantes, ortodoncia, estética dental y más — todo en un solo lugar, en el norte de Guayaquil.
+      </p>
+
+      <div id="container-02" class="mt-8 flex justify-center gap-4">
+        <button id="start" class="inline-block px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+          Agenda tu cita
+        </button>
+        <button id="demo" class="inline-block px-6 py-3 border border-gray-300 text-gray-700 rounded-lg dark:border-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+          Ver servicios
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+
 </html>
