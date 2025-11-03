@@ -3,7 +3,7 @@
 // Importar funciones de Firebase desde CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 import { getDatabase, ref, set, push, get } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
-
+// aja
 // Configuración de Firebase usando variables de entorno
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
