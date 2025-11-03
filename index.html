@@ -1,38 +1,463 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>landingsalvatore</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Consultorio Dental Arrobo</title>
+
+  <!-- TailwindCSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Flowbite CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+
+  <!-- Configuración de estilos para el Hero con imagen de fondo -->
+  <style>
+    /* Usamos una imagen de placeholder profesional para simular el fondo */
+    .hero-background {
+      /* Aquí puedes poner una URL de imagen real de tu consultorio o dentista */
+      background-image: url('https://placehold.co/1600x900/007AFF/ffffff?text=Tu+Consulta+Dental+Avanzada');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    /* Degradado de superposición para que el texto sea legible */
+    .hero-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      /* Degradado basado en el color azul/verde de la imagen de referencia */
+      background: linear-gradient(to right, rgba(0, 123, 255, 0.8) 0%, rgba(30, 215, 96, 0.7) 100%);
+    }
+
+    /* Asegura que el contenido esté por encima del overlay */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+  </style>
 </head>
 
-<body>
-  <main class="bg-slate-50 dark:bg-gray-900">
-    <div id="container-01" class="mx-auto px-4 py-20 text-center">
-      <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-        Sonríe con confianza: tu salud dental en manos expertas
-      </h1>
+<body class="bg-white dark:bg-gray-900 font-sans">
 
-      <p class="mt-6 text-lg leading-relaxed text-gray-600 max-w-2xl mx-auto dark:text-gray-300">
-        En Consultorio Dental Arrobo combinamos tecnología avanzada y atención personalizada para cuidar tu sonrisa. Implantes, ortodoncia, estética dental y más — todo en un solo lugar, en el norte de Guayaquil.
-      </p>
-
-      <div id="container-02" class="mt-8 flex justify-center gap-4">
-        <button id="start" class="inline-block px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
-          Agenda tu cita
-        </button>
-        <button id="demo" class="inline-block px-6 py-3 border border-gray-300 text-gray-700 rounded-lg dark:border-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-          Ver servicios
-        </button>
+  <!-- ====== TOP BAR (Info de Contacto y Redes Sociales) ====== -->
+  <div class="bg-blue-900 text-white text-sm hidden md:block dark:bg-gray-800">
+    <div class="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
+      <div class="flex space-x-4">
+        <span class="flex items-center">
+          <!-- Icono de ubicación -->
+          <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M10 2a6 6 0 00-6 6c0 4.192 4.12 8.528 5.75 10.385a.75.75 0 00.5 0C11.88 16.528 16 12.192 16 8a6 6 0 00-6-6zm0 9a3 3 0 100-6 3 3 0 000 6z" />
+          </svg>
+          Norte de Guayaquil, Ecuador
+        </span>
+        <span class="flex items-center">
+          <!-- Icono de teléfono -->
+          <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M2 3a1 1 0 00-1 1v1a1 1 0 002 0V4a1 1 0 00-1-1zm3 0a1 1 0 00-1 1v1a1 1 0 002 0V4a1 1 0 00-1-1zm3 0a1 1 0 00-1 1v1a1 1 0 002 0V4a1 1 0 00-1-1zm3 0a1 1 0 00-1 1v1a1 1 0 002 0V4a1 1 0 00-1-1zm3 0a1 1 0 00-1 1v1a1 1 0 002 0V4a1 1 0 00-1-1z" />
+            <path fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-7-2a1 1 0 112 0 1 1 0 01-2 0zm10-2a1 1 0 11-2 0 1 1 0 012 0zm-5 4a1 1 0 11-2 0 1 1 0 012 0z"
+              clip-rule="evenodd" />
+          </svg>
+          +593 99 123 4567
+        </span>
+      </div>
+      <div class="flex space-x-3">
+        <a href="#" class="hover:text-blue-200 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M20 3a1 1 0 00-1-1h-2.586a1 1 0 00-.707.293L13 3.586V2a1 1 0 00-1-1H3a1 1 0 00-1 1v16a1 1 0 001 1h14a1 1 0 001-1V4.414l2.121-2.121A1 1 0 0020 3z" />
+          </svg>
+        </a>
+        <a href="#" class="hover:text-blue-200 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M15.65 4.5H13V3h2.65V4.5zM15 7h-2v2h2V7zm-2 4h-2v2h2v-2zm-2 4H9v-2h2v2zm-2-4H7v2h2v-2zm-2-4H5v2h2V7zm0-4H5V4.5h2V3zM3 18h14V5H3v13z" />
+          </svg>
+        </a>
+        <a href="#" class="hover:text-blue-200 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M19.982 4.414c-.815.362-1.688.608-2.6.72.935-.562 1.65-1.455 1.99-2.51-.875.52-1.84 0.9-2.868 1.107C15.684 2.378 14.53 2 13.2 2c-2.5 0-4.55 2.05-4.55 4.57 0 .36.04.71.12 1.05-3.8-.192-7.18-2.02-9.45-4.8c-.4.7-.63 1.54-.63 2.42 0 1.58.8 2.98 2.01 3.79-.74-.02-1.44-.22-2.05-.56v.05c0 2.22 1.58 4.07 3.66 4.47-.38.1-.8.15-1.22.15-.3 0-.6-.03-.88-.08 1.02 3.03 3.97 5.24 7.47 5.24-1.56 1.22-3.53 1.95-5.67 1.95-.37 0-.74-.02-1.1-.06C2.65 17.84 5.92 19 9.38 19c7.3 0 11.3-6.04 11.3-11.3v-.56c.78-.56 1.45-1.28 1.98-2.08z" />
+          </svg>
+        </a>
+        <a href="#" class="hover:text-blue-200 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M10 2a8 8 0 00-8 8c0 4.418 3.582 8 8 8s8-3.582 8-8c0-4.418-3.582-8-8-8zm-2.4 12.8a.8.8 0 011.6 0v-2.4a.8.8 0 01-1.6 0v2.4zm4.8 0a.8.8 0 011.6 0v-2.4a.8.8 0 01-1.6 0v2.4zm-2.4-5.6a1.2 1.2 0 110-2.4 1.2 1.2 0 010 2.4z" />
+          </svg>
+        </a>
       </div>
     </div>
-  </main>
+  </div>
 
-  <script type="module" src="/src/main.js"></script>
+
+  <!-- ====== NAVBAR PRINCIPAL (Fixed) ====== -->
+  <nav class="bg-white border-gray-200 dark:bg-gray-900 sticky top-0 z-50 shadow-lg dark:shadow-2xl">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="#inicio" class="flex items-center space-x-3">
+        <span
+          class="self-center text-2xl font-extrabold whitespace-nowrap text-blue-800 dark:text-blue-400">DentalPro</span>
+      </a>
+
+      <!-- Botón de menú para móvil -->
+      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <a href="https://wa.me/593991234567" target="_blank"
+          class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700">
+          Reservar Cita
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-default" aria-expanded="false">
+          <span class="sr-only">Abrir menú principal</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 17 14">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menú de navegación principal -->
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-default">
+        <ul
+          class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <li><a href="#inicio"
+              class="block py-2 px-3 text-blue-700 rounded md:bg-transparent md:p-0 dark:text-blue-500">Inicio</a></li>
+          <li><a href="#servicios"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent dark:hover:text-blue-500">Servicios</a>
+          </li>
+          <li><a href="#productos"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent dark:hover:text-blue-500">Productos</a>
+          </li>
+          <li><a href="#votacion"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent dark:hover:text-blue-500">Votación</a>
+          </li>
+          <li><a href="#galeria"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent dark:hover:text-blue-500">Galería</a>
+          </li>
+          <li><a href="#testimonios"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent dark:hover:text-blue-500">Testimonios</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== HERO SECTION - Nueva Vista Estilizada ====== -->
+  <header id="inicio" class="hero-background min-h-[500px] flex items-center">
+    <div class="hero-content mx-auto px-4 py-20 text-left max-w-screen-xl">
+      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl leading-tight">
+        Una vida mejor comienza con una <span class="text-yellow-300">sonrisa hermosa.</span>
+      </h1>
+      <p class="mt-6 text-xl leading-relaxed text-blue-50 max-w-3xl">
+        Bienvenido al Consultorio Dental Arrobo, donde la confianza y el confort son nuestras prioridades. Implantes,
+        ortodoncia, estética dental y más — todo en un solo lugar, en el norte de Guayaquil.
+      </p>
+      <div class="mt-10 flex gap-4 flex-col sm:flex-row">
+        <!-- Botón principal de cita (similar al de la imagen de referencia) -->
+        <a href="https://wa.me/593991234567" target="_blank"
+          class="inline-block px-8 py-3 text-gray-900 bg-green-300 rounded-lg font-bold hover:bg-green-400 transition shadow-xl hover:shadow-2xl text-lg w-full sm:w-auto text-center">
+          Reservar Cita
+        </a>
+        <!-- Botón secundario - mantenemos el de votación / demo original -->
+        <a href="#votacion"
+          class="inline-block px-8 py-3 text-white border-2 border-white rounded-lg hover:bg-white hover:text-blue-900 transition font-medium text-lg w-full sm:w-auto text-center">
+          Vota por tu producto favorito
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ====== SERVICIOS (Contenido original, solo ajustando clases para mejor estética) ====== -->
+  <section id="servicios" class="bg-white dark:bg-gray-900 py-16">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-4">
+        Nuestros Servicios
+      </h2>
+      <p class="text-center text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+        Ofrecemos una amplia gama de tratamientos dentales con tecnología de punta
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Tarjeta 1: Ortodoncia -->
+        <div
+          class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-gray-800 shadow-xl transition-all duration-500 hover:shadow-blue-500/50 hover:scale-[1.02]">
+          <img src="https://placehold.co/400x300/3b82f6/ffffff?text=Ortodoncia" alt="Ortodoncia"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Ortodoncia</h3>
+            <p class="text-base text-gray-600 dark:text-gray-300">Alineación perfecta y funcional de tu sonrisa con las
+              últimas técnicas.</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Implantes -->
+        <div
+          class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-gray-800 shadow-xl transition-all duration-500 hover:shadow-green-500/50 hover:scale-[1.02]">
+          <img src="https://placehold.co/400x300/10b981/ffffff?text=Implantes" alt="Implantes"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Implantes Dentales</h3>
+            <p class="text-base text-gray-600 dark:text-gray-300">Soluciones permanentes, funcionales y naturales para
+              reemplazar dientes perdidos.</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Endodoncia -->
+        <div
+          class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-gray-800 shadow-xl transition-all duration-500 hover:shadow-purple-500/50 hover:scale-[1.02]">
+          <img src="https://placehold.co/400x300/8b5cf6/ffffff?text=Endodoncia" alt="Endodoncia"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Endodoncia</h3>
+            <p class="text-base text-gray-600 dark:text-gray-300">Tratamientos de conducto indoloros y de alta precisión
+              para salvar tus dientes.</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Estética Dental -->
+        <div
+          class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-gray-800 shadow-xl transition-all duration-500 hover:shadow-pink-500/50 hover:scale-[1.02]">
+          <img src="https://placehold.co/400x300/ec4899/ffffff?text=Estetica" alt="Estética"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Estética Dental</h3>
+            <p class="text-base text-gray-600 dark:text-gray-300">Diseñamos la sonrisa perfecta a través de
+              blanqueamiento y carillas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRODUCTOS (Sin cambios en la lógica) ====== -->
+  <section id="productos" class="bg-slate-100 dark:bg-gray-800 py-16">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-4">
+        Productos Destacados
+      </h2>
+
+      <div class="max-w-md mx-auto mb-8">
+        <label for="categories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Filtrar por
+          categoría</label>
+        <select id="categories"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <option value="" selected>Todas las categorías</option>
+          <!-- Opciones cargadas por JS -->
+        </select>
+      </div>
+
+      <p class="text-center text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+        Explora nuestros productos recomendados para el cuidado dental
+      </p>
+
+      <!-- Contenedor de productos - Mantiene el ID para el JS -->
+      <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="col-span-full text-center py-8">
+          <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <p class="mt-4 text-gray-600 dark:text-gray-300">Cargando productos...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== VOTACIÓN (Sin cambios en la lógica) ====== -->
+  <section id="votacion" class="bg-white dark:bg-gray-900 py-16">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-4">
+        Vota por tu Producto Favorito
+      </h2>
+      <p class="text-center text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+        Ayúdanos a conocer cuáles son los productos más populares entre nuestros clientes
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Formulario de votación -->
+        <div
+          class="bg-gradient-to-br from-blue-50 to-blue-200 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-2xl border-4 border-blue-500/20">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            🗳️ Emite tu voto
+          </h3>
+          <form id="form_voting" class="max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+
+            <!-- Input para el nombre del usuario -->
+            <label for="user_name" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Nombre:</label>
+            <input type="text" id="user_name" name="user_name" placeholder="Tu nombre"
+              class="w-full mb-4 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600" />
+
+            <!-- Select para elegir producto -->
+            <label for="select_product"
+              class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Producto:</label>
+            <select id="select_product" name="select_product"
+              class="w-full mb-4 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600">
+              <option value="" disabled selected>Selecciona un producto</option>
+              <!-- Opciones se llenan con JS -->
+            </select>
+
+            <!-- Botón de envío -->
+            <button type="submit"
+              class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium">
+              Votar
+            </button>
+
+          </form>
+
+        </div>
+
+        <!-- Resultados de votación -->
+        <div class="py-4">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            📊 Resultados en Tiempo Real
+          </h3>
+          <div id="results" class="space-y-4">
+            <div class="text-center py-8">
+              <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-4 border-blue-600 border-t-4"></div>
+              <p class="mt-4 text-gray-600 dark:text-gray-300">Cargando resultados...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== GALERÍA (Más estilizada) ====== -->
+  <section id="galeria" class="bg-slate-100 dark:bg-gray-800 py-16">
+    <div class="px-4 py-8 mx-auto max-w-screen-xl">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-4">
+        Nuestras Instalaciones
+      </h2>
+      <p class="text-center text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+        Conoce nuestro moderno consultorio dental diseñado para tu máximo confort
+      </p>
+
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <!-- Uso de efecto de hover más sutil y bordes redondeados -->
+        <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Sala+Espera" alt="Sala de Espera"
+          class="w-full h-auto rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:opacity-90 object-cover aspect-square">
+        <img src="https://placehold.co/400x400/10b981/ffffff?text=Area+Clinica" alt="Área Clínica"
+          class="w-full h-auto rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:opacity-90 object-cover aspect-square">
+        <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=Esterilizacion" alt="Zona de Esterilización"
+          class="w-full h-auto rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:opacity-90 object-cover aspect-square">
+        <img src="https://placehold.co/400x400/ec4899/ffffff?text=Equipo+RX" alt="Equipo de Rayos X"
+          class="w-full h-auto rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:opacity-90 object-cover aspect-square">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIOS (Mejor diseño de tarjeta) ====== -->
+  <section id="testimonios" class="bg-white dark:bg-gray-900 py-16">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-4">
+        Lo que dicen nuestros pacientes
+      </h2>
+      <p class="text-center text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+        La satisfacción de nuestros pacientes es nuestra mejor carta de presentación
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          class="bg-slate-50 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border-t-4 border-blue-500 hover:shadow-2xl transition duration-300">
+          <div class="flex text-yellow-400 text-2xl mb-4">
+            <span>★★★★★</span>
+          </div>
+          <p class="text-gray-700 dark:text-gray-200 text-lg italic mb-6">
+            "Excelente atención y profesionalismo. Mi tratamiento de ortodoncia fue un éxito total, superando mis
+            expectativas."
+          </p>
+          <p class="font-bold text-gray-900 dark:text-white border-l-4 border-blue-300 pl-3">- María González, <span
+              class="text-sm font-normal text-gray-500 dark:text-gray-400">Paciente de Ortodoncia</span></p>
+        </div>
+
+        <div
+          class="bg-slate-50 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border-t-4 border-blue-500 hover:shadow-2xl transition duration-300">
+          <div class="flex text-yellow-400 text-2xl mb-4">
+            <span>★★★★★</span>
+          </div>
+          <p class="text-gray-700 dark:text-gray-200 text-lg italic mb-6">
+            "Los implantes quedaron perfectos. Me siento como si fueran mis propios dientes, sin ninguna molestia. Gran
+            trabajo."
+          </p>
+          <p class="font-bold text-gray-900 dark:text-white border-l-4 border-blue-300 pl-3">- Carlos Pérez, <span
+              class="text-sm font-normal text-gray-500 dark:text-gray-400">Paciente de Implantes</span></p>
+        </div>
+
+        <div
+          class="bg-slate-50 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border-t-4 border-blue-500 hover:shadow-2xl transition duration-300">
+          <div class="flex text-yellow-400 text-2xl mb-4">
+            <span>★★★★★</span>
+          </div>
+          <p class="text-gray-700 dark:text-gray-200 text-lg italic mb-6">
+            "Instalaciones modernas y personal muy amable y atento. El mejor consultorio dental en Guayaquil, totalmente
+            recomendado."
+          </p>
+          <p class="font-bold text-gray-900 dark:text-white border-l-4 border-blue-300 pl-3">- Ana Rodríguez, <span
+              class="text-sm font-normal text-gray-500 dark:text-gray-400">Paciente de Estética</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TOAST NOTIFICATION (Mantiene la funcionalidad original) ====== -->
+  <div id="toast-interactive"
+    class="hidden fixed right-5 bottom-5 flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg shadow-lg dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 z-50"
+    role="alert">
+    <div class="flex">
+      <div class="ms-3 text-sm font-normal">
+        <span class="mb-1 text-sm font-extrabold text-gray-900 dark:text-white">¡Promoción especial! 🎉</span>
+        <div class="mb-2 text-gray-700 dark:text-gray-300">Obtén 20% de descuento en tu primera consulta</div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <a href="https://wa.me/593991234567" target="_blank"
+              class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">Agendar
+              ahora</a>
+          </div>
+          <div>
+            <button data-dismiss-target="#toast-interactive"
+              class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 dark:bg-gray-600 dark:text-white dark:border-gray-600">Más
+              tarde</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" data-dismiss-target="#toast-interactive"
+        class="ms-auto -mx-1.5 -my-1.5 p-1.5 inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-white rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <span class="sr-only">Cerrar</span>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 14 14">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="max-w-screen-xl mx-auto px-4 text-center">
+      <p class="text-gray-400 text-lg">
+        Consultorio Dental Arrobo. Tu sonrisa es nuestro compromiso.
+      </p>
+      <div class="flex justify-center space-x-4 mt-3 text-gray-500">
+        <a href="#servicios" class="hover:text-white transition">Servicios</a>
+        <span>|</span>
+        <a href="#productos" class="hover:text-white transition">Productos</a>
+        <span>|</span>
+        <a href="#testimonios" class="hover:text-white transition">Testimonios</a>
+      </div>
+      <p class="text-gray-500 text-sm mt-4">© 2025 Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Flowbite JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+  <!-- JavaScript principal (Mantiene la referencia a tu archivo de lógica) -->
+  <script type="module" src="./js/file01.js"></script>
+
 </body>
-
 
 </html>
