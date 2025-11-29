@@ -15,7 +15,7 @@ let allCategories = [];
  */
 const renderProducts = () => {
   // 🔥 CAMBIO: Apuntar al JSON local en la carpeta data
-  fetchProducts('../data/productos.json')
+  fetchProducts('/data/productos.json')
     .then(result => {
       if (result.success) {
         allProducts = result.body; // Todos los productos
@@ -402,7 +402,7 @@ const showError = (type, message) => {
   console.log('🦷 Bienvenido a Consultorio Dental Arrobo');
 
   // 🔥 CAMBIO: Cargar productos desde JSON local
-  fetchProducts('../data/productos.json')
+  fetchProducts('/data/productos.json')
     .then(result => {
       if (result.success) {
         console.log('📦 Productos locales:', result.body); // Debug en consola
