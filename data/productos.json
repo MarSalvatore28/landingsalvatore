@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "nombre": "Limpieza Dental Profesional",
+    "descripcion": "Elimina placa, sarro y manchas superficiales. Recomendado cada 6 meses.",
+    "precio": 25.00,
+    "categoria": 1,
+    "imagen": "https://images.pexels.com/photos/6812521/pexels-photo-6812521.jpeg"
+  },
+  {
+    "id": 2,
+    "nombre": "Blanqueamiento Dental",
+    "descripcion": "Tratamiento estético para aclarar varios tonos del esmalte dental.",
+    "precio": 60.00,
+    "categoria": 2,
+    "imagen": "https://images.pexels.com/photos/3762404/pexels-photo-3762404.jpeg"
+  },
+  {
+    "id": 3,
+    "nombre": "Resina Estética",
+    "descripcion": "Restauración dental con resinas del color del diente, ideal para caries pequeñas.",
+    "precio": 35.00,
+    "categoria": 1,
+    "imagen": "https://images.pexels.com/photos/4269692/pexels-photo-4269692.jpeg"
+  },
+  {
+    "id": 4,
+    "nombre": "Ortodoncia con Brackets Metálicos",
+    "descripcion": "Corrección de malposiciones dentales mediante brackets tradicionales.",
+    "precio": 900.00,
+    "categoria": 3,
+    "imagen": "https://images.pexels.com/photos/3845655/pexels-photo-3845655.jpeg"
+  },
+  {
+    "id": 5,
+    "nombre": "Ortodoncia Invisible",
+    "descripcion": "Alineadores transparentes para corregir la posición dental sin notar que los usas.",
+    "precio": 1500.00,
+    "categoria": 3,
+    "imagen": "https://images.pexels.com/photos/6627448/pexels-photo-6627448.jpeg"
+  },
+  {
+    "id": 6,
+    "nombre": "Radiografía Panorámica",
+    "descripcion": "Imagen completa de maxilares para diagnóstico detallado.",
+    "precio": 18.00,
+    "categoria": 4,
+    "imagen": "https://images.pexels.com/photos/3055687/pexels-photo-3055687.jpeg"
+  },
+  {
+    "id": 7,
+    "nombre": "Extracción Dental",
+    "descripcion": "Extracción simple de pieza dental dañada o sin posibilidad de restauración.",
+    "precio": 40.00,
+    "categoria": 1,
+    "imagen": "https://images.pexels.com/photos/5355698/pexels-photo-5355698.jpeg"
+  },
+  {
+    "id": 8,
+    "nombre": "Limpieza Infantil",
+    "descripcion": "Limpieza suave y adaptada para niños. Incluye sellantes si se requiere.",
+    "precio": 18.00,
+    "categoria": 5,
+    "imagen": "https://images.pexels.com/photos/3845535/pexels-photo-3845535.jpeg"
+  }
+]

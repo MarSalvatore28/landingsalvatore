@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<categories>
+  <category>
+    <id>1</id>
+    <name>Tratamientos Generales</name>
+  </category>
+  <category>
+    <id>2</id>
+    <name>Estética Dental</name>
+  </category>
+  <category>
+    <id>3</id>
+    <name>Ortodoncia</name>
+  </category>
+  <category>
+    <id>4</id>
+    <name>Diagnóstico</name>
+  </category>
+  <category>
+    <id>5</id>
+    <name>Odontopediatría</name>
+  </category>
+</categories>

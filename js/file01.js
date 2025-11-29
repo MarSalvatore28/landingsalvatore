@@ -10,14 +10,16 @@ let allCategories = [];
 
 /**
  * Renderiza los productos obtenidos desde la API en el contenedor
- * @description Obtiene productos desde JSON y los muestra en tarjetas
+ * @description Obtiene productos desde JSON LOCAL y los muestra en tarjetas
  * @returns {void}
  */
 const renderProducts = () => {
-  fetchProducts('https://data-dawm.github.io/datum/reseller/products.json')
+  // 🔥 CAMBIO: Apuntar al JSON local en la carpeta data
+  fetchProducts('../data/productos.json')
     .then(result => {
       if (result.success) {
         allProducts = result.body; // Todos los productos
+        console.log('✅ Productos cargados:', allProducts); // Debug
         displayProducts(allProducts.slice(0, 6)); // Mostramos solo 6 inicialmente
         populateVotingSelect(allProducts);  // Llenar select de votación
       } else {
@@ -43,30 +45,41 @@ const displayProducts = (products) => {
     return;
   }
 
-  container.innerHTML = products.map(product => `
+  container.innerHTML = products.map(product => {
+    // 🔥 Mapeo de categorías por ID
+    const categorias = {
+      1: 'Tratamientos Generales',
+      2: 'Estética Dental',
+      3: 'Ortodoncia',
+      4: 'Diagnóstico',
+      5: 'Odontopediatría'
+    };
+    
+    return `
     <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
-      <div class="relative h-48 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
-        <img src="${product.imgUrl}" alt="${product.title}" class="h-full w-full object-contain">
+      <div class="relative h-48 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center overflow-hidden">
+        <img src="${product.imagen}" alt="${product.nombre}" class="h-full w-full object-cover" onerror="this.src='https://placehold.co/400x300/3b82f6/ffffff?text=Servicio+Dental'">
       </div>
       <div class="p-6">
         <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 mb-2">
-          ${product.category}
+          ${categorias[product.categoria] || 'Servicio Dental'}
         </span>
         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-          ${product.title.length > 30 ? product.title.substring(0, 30) + '...' : product.title}
+          ${product.nombre.length > 35 ? product.nombre.substring(0, 35) + '...' : product.nombre}
         </h3>
         <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-          ${product.description || 'Producto de alta calidad para el cuidado dental'}
+          ${product.descripcion || 'Servicio de alta calidad para el cuidado dental'}
         </p>
         <div class="flex items-center justify-between">
-          <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">$${product.price}</span>
-          <a href="${product.productURL}" target="_blank" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm font-medium">
-            Ver más
+          <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">${product.precio.toFixed(2)}</span>
+          <a href="https://wa.me/593991234567?text=Hola,%20me%20interesa%20el%20servicio:%20${encodeURIComponent(product.nombre)}" target="_blank" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm font-medium">
+            Consultar
           </a>
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 };
 
 /**
@@ -88,12 +101,13 @@ const getProductEmoji = (category) => {
 
 /**
  * Renderiza las categorías obtenidas desde XML
- * @description Obtiene categorías desde XML y las muestra en el select
+ * @description Obtiene categorías desde XML LOCAL y las muestra en el select
  * @returns {void}
  */
 const renderCategories = async () => {
   try {
-    const result = await fetchCategories('https://data-dawm.github.io/datum/reseller/categories.xml');
+    // 🔥 CAMBIO: Apuntar al XML local en la carpeta data
+    const result = await fetchCategories('../data/categorias.xml');
 
     if (result.success) {
       const container = document.getElementById('categories');
@@ -111,6 +125,8 @@ const renderCategories = async () => {
 
         allCategories.push({ id, name });
       }
+      
+      console.log('✅ Categorías cargadas:', allCategories); // Debug
     } else {
       alert('Error al cargar categorías: ' + result.body);
     }
@@ -131,14 +147,22 @@ const filterProducts = (categoryName) => {
     return;
   }
 
-  // Buscamos el ID de la categoría seleccionada
-  const category = allCategories.find(cat => cat.name === categoryName);
-  if (!category) {
-    displayProducts([]); // no encontró la categoría
+  // 🔥 Mapeo de nombres de categoría a IDs
+  const categoriaMap = {
+    'Tratamientos Generales': 1,
+    'Estética Dental': 2,
+    'Ortodoncia': 3,
+    'Diagnóstico': 4,
+    'Odontopediatría': 5
+  };
+
+  const categoryId = categoriaMap[categoryName];
+  if (!categoryId) {
+    displayProducts([]);
     return;
   }
 
-  const filtered = allProducts.filter(product => product.category_id.toString() === category.id);
+  const filtered = allProducts.filter(product => product.categoria === categoryId);
   displayProducts(filtered);
 };
 
@@ -152,12 +176,12 @@ const populateVotingSelect = (products) => {
   const select = document.getElementById('select_product');
   if (!select) return;
 
-  select.innerHTML = '<option value="" disabled selected>Selecciona un producto</option>';
+  select.innerHTML = '<option value="" disabled selected>Selecciona un servicio</option>';
 
   products.forEach(product => {
     const option = document.createElement('option');
-    option.value = product.asin;
-    option.textContent = product.title;
+    option.value = product.id; // 🔥 Cambiado de asin a id
+    option.textContent = product.nombre; // 🔥 Cambiado de title a nombre
     select.appendChild(option);
   });
 };
@@ -190,7 +214,7 @@ const enableForm = () => {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span>Enviando...';
 
-    // Guardar voto (puedes usar tu función saveVote)
+    // Guardar voto
     saveVote(productId, userName)
       .then(result => {
         submitBtn.disabled = false;
@@ -244,7 +268,7 @@ const displayVotes = async () => {
       // Obtener nombres de productos
       const productNames = {};
       allProducts.forEach(product => {
-        productNames[product.asin] = product.title;
+        productNames[product.id] = product.nombre; // 🔥 Cambiado de asin/title a id/nombre
       });
 
       // Crear tabla
@@ -273,7 +297,7 @@ const displayVotes = async () => {
         const sortedVotes = Object.entries(voteCounts).sort((a, b) => b[1] - a[1]);
 
         sortedVotes.forEach(([productId, count], index) => {
-          const productName = productNames[productId] || `Producto ${productId}`;
+          const productName = productNames[productId] || `Servicio #${productId}`; // 🔥 Cambiado mensaje
           const medalEmoji = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
 
           tableHTML += `
@@ -377,12 +401,13 @@ const showError = (type, message) => {
 (() => {
   console.log('🦷 Bienvenido a Consultorio Dental Arrobo');
 
-  fetchProducts('https://data-dawm.github.io/datum/reseller/products.json')
+  // 🔥 CAMBIO: Cargar productos desde JSON local
+  fetchProducts('../data/productos.json')
     .then(result => {
       if (result.success) {
-        console.log(result.body); // mira esto en la consola del navegador
+        console.log('📦 Productos locales:', result.body); // Debug en consola
       } else {
-        console.error('Error cargando productos:', result.body);
+        console.error('❌ Error cargando productos:', result.body);
       }
     });
 
